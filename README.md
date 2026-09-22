@@ -156,4 +156,6 @@ flutter run
 
 ## 📄 License
 
-This project is for learning/educational purposes only.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+This repository is built for learning/educational purposes; the Spotify name, brand, and assets belong to their respective owners.
