@@ -6,6 +6,7 @@ import 'package:spotify/common/widgets/textform/tex_form_field.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
 import 'package:spotify/core/config/theme/app_colors.dart';
+import 'package:spotify/presentation/main/pages/root_screen.dart';
 import 'package:spotify/presentation/auth/register/pages/register_screeen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -109,7 +110,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
 
             const SizedBox(height: 30),
-            BasicAppButton(onPressed: () {}, title: 'Sign In', height: 80),
+            BasicAppButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RootScreen()),
+                );
+              },
+              title: 'Sign In',
+              height: 80,
+            ),
 
             const SizedBox(height: 10),
             Row(

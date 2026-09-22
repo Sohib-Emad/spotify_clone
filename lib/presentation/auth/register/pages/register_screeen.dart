@@ -6,6 +6,7 @@ import 'package:spotify/common/widgets/textform/tex_form_field.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
 import 'package:spotify/core/config/theme/app_colors.dart';
+import 'package:spotify/presentation/main/pages/root_screen.dart';
 import 'package:spotify/presentation/auth/login/pages/login_screen.dart';
 
 class RegisterScreeen extends StatefulWidget {
@@ -109,8 +110,13 @@ class _LoginScreenState extends State<RegisterScreeen> {
 
               const SizedBox(height: 30),
               BasicAppButton(
-                textStyle: TextStyle(fontSize: 20, color: Colors.white, ),
-                onPressed: () {},
+                textStyle: TextStyle(fontSize: 20, color: Colors.white),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const RootScreen()),
+                  );
+                },
                 title: 'creat account',
                 height: 80,
               ),

@@ -26,13 +26,15 @@ A Spotify UI clone built with **Flutter**. It includes the on-boarding flow, the
 | ![Splash](assets/appScreens/1.png) | ![Intro](assets/appScreens/2.png) | ![Choose Mode](assets/appScreens/3.png) |
 | Register / Sign in | Login | Login (with password) |
 | ![Register](assets/appScreens/4.png) | ![Login](assets/appScreens/5.png) | ![Login Password](assets/appScreens/6.png) |
+| Home |||
+| ![Home](assets/appScreens/home_screen.png) |||
 
 ## 🚀 Getting Started
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Sohib-Emad/spotify.git
+git clone https://github.com/Sohib-Emad/spotify_clone.git
 ```
 
 2. Install dependencies:

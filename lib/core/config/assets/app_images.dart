@@ -8,4 +8,10 @@ class AppImages {
   static const String googel = '${basePath}google$format';
   static const String ios = '${basePath}ios$format';
   static const String hide = '${basePath}Hide$format';
+  static const String Search = '${basePath}Search$format';
+  static const String home_artist = '${basePath}home_artist$format';
+  static const String home = '${basePath}home$format';
+    static const String home1 = '${basePath}home1$format';
+
 }
+
