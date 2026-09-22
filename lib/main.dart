@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/config/theme/app_theme.dart';
-import 'package:spotify/presentation/choose_theme_app.dart/logic/cubit/theme_cubit.dart';
+import 'package:spotify/presentation/choose_theme/logic/cubit/theme_cubit.dart';
 import 'package:spotify/presentation/splash/pages/splash.dart';
 
 void main()  {

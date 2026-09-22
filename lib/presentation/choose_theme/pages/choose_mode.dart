@@ -5,8 +5,8 @@ import 'package:spotify/common/widgets/button/app_primary_button.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
-import 'package:spotify/presentation/choose_theme_app.dart/logic/cubit/theme_cubit.dart';
-import 'package:spotify/presentation/register_or_signin/pages/register_or_sign.dart';
+import 'package:spotify/presentation/choose_theme/logic/cubit/theme_cubit.dart';
+import 'package:spotify/presentation/auth/register_or_signin/pages/register_or_sign.dart';
 
 class ChooseMode extends StatelessWidget {
   const ChooseMode({super.key});

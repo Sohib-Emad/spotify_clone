@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify/common/widgets/button/app_primary_button.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
-import 'package:spotify/presentation/choose_theme_app.dart/pages/choose_mode.dart';
+import 'package:spotify/presentation/choose_theme/pages/choose_mode.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
