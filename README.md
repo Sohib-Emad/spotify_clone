@@ -54,8 +54,8 @@ A Spotify UI clone built with **Flutter** — from on-boarding and theme selecti
 | ![Splash](assets/appScreens/1.png) | ![Intro](assets/appScreens/2.png) | ![Choose Mode](assets/appScreens/3.png) |
 | Register / Sign in | Login | Login (with password) |
 | ![Register](assets/appScreens/4.png) | ![Login](assets/appScreens/5.png) | ![Login Password](assets/appScreens/6.png) |
-| Home | Now Playing | |
-| ![Home](assets/appScreens/home_screen.png) | ![Now Playing](assets/appScreens/music_screen.png) | |
+| Home | Now Playing | Lyrics |
+| ![Home](assets/appScreens/home_screen.png) | ![Now Playing](assets/appScreens/music_screen.png) | ![Lyrics](assets/appScreens/lyrics.png) |
 
 ---
 

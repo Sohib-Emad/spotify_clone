@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/common/widgets/appBar/basic_app_bar.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
+import 'package:spotify/presentation/home/pages/lyrics_screen.dart';
 
 class MusicScreen extends StatelessWidget {
   const MusicScreen({super.key});
@@ -73,18 +74,118 @@ class MusicScreen extends StatelessWidget {
               const SizedBox(height: 8),
               const _PlayerControls(),
               const Spacer(flex: 1),
-              Image.asset(AppImages.s, height: 30, width: 30),
-              const Text(
-                'Lyrics',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              const _DraggableLyricsBar(),
               const SizedBox(height: 12),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DraggableLyricsBar extends StatefulWidget {
+  const _DraggableLyricsBar();
+
+  @override
+  State<_DraggableLyricsBar> createState() => _DraggableLyricsBarState();
+}
+
+class _DraggableLyricsBarState extends State<_DraggableLyricsBar>
+    with SingleTickerProviderStateMixin {
+  static const double _maxDragUp = -140;
+  static const double _viaVelocity = -400;
+  static const double _viaDistance = 0.7;
+
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 220),
+  );
+
+  double _dragY = 0;
+  double _snapFrom = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      if (mounted) {
+        setState(() => _dragY = _snapFrom * (1 - _controller.value));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _openLyrics() {
+    Navigator.of(context).push(
+      PageRouteBuilder<void>(
+        transitionDuration: const Duration(milliseconds: 320),
+        reverseTransitionDuration: const Duration(milliseconds: 220),
+        pageBuilder: (_, _, _) => const LyricsScreen(),
+        transitionsBuilder: (_, animation, _, child) {
+          final curved = CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOutCubic,
+          );
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 1),
+              end: Offset.zero,
+            ).animate(curved),
+            child: child,
+          );
+        },
+      ),
+    );
+  }
+
+  void _animateBack() {
+    _snapFrom = _dragY;
+    _controller.forward(from: 0);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onVerticalDragUpdate: (details) {
+        _controller.stop();
+        setState(() {
+          _dragY = (_dragY + details.delta.dy).clamp(_maxDragUp, 0.0);
+        });
+      },
+      onVerticalDragEnd: (details) {
+        final velocity = details.primaryVelocity ?? 0;
+        final openedByVelocity = velocity < _viaVelocity;
+        final openedByDistance = _dragY < _maxDragUp * _viaDistance;
+        if (openedByVelocity || openedByDistance) {
+          _openLyrics();
+          setState(() => _dragY = 0);
+        } else {
+          _animateBack();
+        }
+      },
+      child: Transform.translate(
+        offset: Offset(0, _dragY),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(AppImages.s, height: 30, width: 30),
+            const SizedBox(height: 2),
+            const Text(
+              'Lyrics',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
       ),
     );
